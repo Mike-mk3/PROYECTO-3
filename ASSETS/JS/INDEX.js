@@ -40,14 +40,18 @@ new Chart(ctx, {
 
     tbody.innerHTML = "";
     labels.forEach((label, index) => {
-        console.log(label);
-        tbody.innerHTML += `
-        <tr>
+
+        const tr = document.createElement("tr");
+        if (data[index] > 50){
+            tr.classList.add("table-info");
+            tr.classList.add("fw-bold");
+        }
+        tr.innerHTML = `
              <th>${index + 1}</th>
              <td>${label}</td>
              <td>${data[index]}</td>
-        </tr>
-            `;
+        `;
+        tbody.appendChild(tr);
     });
 })
 
