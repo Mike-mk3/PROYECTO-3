@@ -15,7 +15,7 @@ new Chart(ctx, {
     data: {
         labels: datosApi.data.labels,
         datasets: [{
-            label: '# of Votes',
+            label: 'Promedio De Ventas Semanales',
             data: datosApi.data.data,
             borderWidth: 1
         }]
