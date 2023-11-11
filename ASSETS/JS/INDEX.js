@@ -2,6 +2,8 @@ console.log ("ENTRO A MI ARCHIVO JS");
 
 
 
+const tbody = document.getElementById('tbody');
+
 
 
 fetch ("https://dev4humans.com.mx/api/Clases/ventas_juguetes")
@@ -9,6 +11,11 @@ fetch ("https://dev4humans.com.mx/api/Clases/ventas_juguetes")
 .then (datosApi => {
     console.log (datosApi);
     const ctx = document.getElementById('myChart');
+
+
+    const labels = datosApi.data.labels;
+    const data = datosApi.data.data
+
 
 new Chart(ctx, {
     type: 'doughnut',
@@ -27,7 +34,21 @@ new Chart(ctx, {
             }
         }
     }
-});
+});  
+
+
+
+    tbody.innerHTML = "";
+    labels.forEach((label, index) => {
+        console.log(label);
+        tbody.innerHTML += `
+        <tr>
+             <th>${index + 1}</th>
+             <td>${label}</td>
+             <td>${data[index]}</td>
+        </tr>
+            `;
+    });
 })
 
 
